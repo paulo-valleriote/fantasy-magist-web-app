@@ -9,12 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'card-vector': 'url("/card-vector.svg")',
+        'card-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.46) 0.1%, rgba(0, 0, 0, 0.8) 100%)'
       },
+      boxShadow: {
+        '3xl-inner': 'inset 0px 0px 95px 10px rgba(0, 0, 0, 0.3)'
+      }
     },
   },
+
   plugins: [],
 }
 export default config
