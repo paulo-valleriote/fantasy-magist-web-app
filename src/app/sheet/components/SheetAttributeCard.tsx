@@ -5,7 +5,7 @@ interface ISheetAttributeCardProps {
 
 export default function SheetAttributeCard(props: ISheetAttributeCardProps) {
 	return (
-		<div className='bg-gray-100 flex flex-col items-center justify-between h-36 w-48'>
+		<div className='bg-gray-200 flex flex-col items-center justify-between h-36 w-48'>
 			<div>SAVE</div>
 			<div className='flex flex-col items-center justify-center'>
 				{props.attribute.toUpperCase()}
