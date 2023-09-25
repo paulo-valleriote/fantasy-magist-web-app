@@ -1,9 +1,14 @@
 import DefaultTextInput from '@/app/components/input/DefaultTextInput'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useCallback, useMemo, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
 
-export default function SheetHeader() {
+interface ISheetHeaderProps {
+	settingsIsOpen: boolean
+	setSettingsIsOpen: () => void
+}
+
+export default function SheetHeader(props: ISheetHeaderProps) {
 	const pathname = usePathname()
 
 	const [page, setPage] = useState({
@@ -49,7 +54,9 @@ export default function SheetHeader() {
 			>
 				ACTIONS
 			</Link>
-			<Link href={'/characters'}>BACK</Link>
+			<button className='w-fit h-fit' onClick={props.setSettingsIsOpen}>
+				SETTINGS
+			</button>
 		</header>
 	)
 }
