@@ -12,6 +12,10 @@ const config: Config = {
 				'card-vector': 'url("/card-vector.svg")',
 				'card-gradient':
 					'linear-gradient(180deg, rgba(255, 255, 255, 0.46) 0.1%, rgba(0, 0, 0, 0.8) 100%)',
+				'shield-vector': 'url("/shield-vector.svg")',
+				'proficiency-border-vector': 'url("/proficiency-border.svg")',
+				'stats-border-vector': 'url("/stats-border-vector.svg")',
+				'attribute-border-vector': 'url("/attribute-border.svg")'
 			},
 			boxShadow: {
 				'3xl-inner': 'inset 0px 0px 95px 10px rgba(0, 0, 0, 0.3)',

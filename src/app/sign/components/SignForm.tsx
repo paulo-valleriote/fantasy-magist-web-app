@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useCallback, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import {LayoutGroup, motion} from 'framer-motion'
+
 
 export default function SignForm() {
 	const pathname = usePathname()
@@ -26,21 +28,15 @@ export default function SignForm() {
 	return (
 		<div className='flex flex-col items-center w-2/3 bg-zinc-700 h-full relative top-60'>
 			<div className='flex flex-col items-center w-full p-6 text-white '>
-				<div className='flex text-xl justify-between w-2/3'>
-					<div
-						className={`w-1/3 text-center ${
-							page.login && 'border-b-2 border-gray-200'
-						}`}
-					>
-						<Link href={'/sign/login'}>Login</Link>
-					</div>
-					<div
-						className={`w-1/3 text-center ${
-							page.register && 'border-b-2 border-gray-200'
-						}`}
-					>
-						<Link href={'/sign/register'}>Register</Link>
-					</div>
+				<div className='relative flex text-xl justify-between w-2/3'>
+						<Link href={'/sign/login'}>
+								Login
+								{page.login && <motion.div layoutId='underline' animate={{borderBottom: '2px solid white'}}/>}
+						</Link>
+						<Link href={'/sign/register'}>
+							Register
+							{page.register && <motion.div layoutId='underline' animate={{borderBottom: '2px solid white'}}/>}
+						</Link>
 				</div>
 			</div>
 			{page.login ? <LoginForm /> : <RegisterForm />}

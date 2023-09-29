@@ -7,7 +7,7 @@ export default function SheetProficiencyCard(
 	props: ISheetProficiencyCardProps
 ) {
 	return (
-		<div className='border-2 border-gray-500 rounded-lg py-2 px-4 h-36 w-48'>
+		<div className='bg-proficiency-border-vector bg-no-repeat bg-contain py-2 px-4 h-36 w-full'>
 			<ul>
 				{props.profieciesList.map((profiency) => (
 					<li key={profiency} className='flex gap-4'>

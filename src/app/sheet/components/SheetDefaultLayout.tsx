@@ -12,14 +12,13 @@ export default function SheetDefaultLayout({
 	const [settingsIsOpen, setSettingsIsOpen] = useState(false)
 
 	const handleSettingsModalState = () => {
-		console.log('a')
 		setSettingsIsOpen(!settingsIsOpen)
 	}
 
 	return (
 		<>
 			<div className='flex justify-center items-center m-[-2rem] mt-8 w-screen'>
-				<div className='flex flex-col p-6 px-28  justify-around bg-gray-300 w-11/12 h-5/6 rounded-lg'>
+				<div className='flex flex-col p-6 px-16 justify-around bg-gray-300 w-11/12 h-5/6 rounded-lg'>
 					<SheetHeader
 						settingsIsOpen={settingsIsOpen}
 						setSettingsIsOpen={handleSettingsModalState}

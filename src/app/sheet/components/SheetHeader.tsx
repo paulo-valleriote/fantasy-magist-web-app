@@ -30,7 +30,7 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 	useMemo(() => changeCurrentPage(), [changeCurrentPage])
 
 	return (
-		<header className='flex justify-between'>
+		<header className='flex flex-col justify-between gap-4'>
 			<div className='flex gap-4'>
 				<DefaultTextInput placeholder='NAME' />
 				<div className='grid grid-cols-3 grid-rows-2 gap-2'>
@@ -42,21 +42,23 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 					<DefaultTextInput placeholder='WEIGHT' />
 				</div>
 			</div>
-			<Link
-				href={'/sheet/general-page'}
-				className={`${page.overview && 'text-red-600'}`}
-			>
-				OVERVIEW
-			</Link>
-			<Link
-				href={'/sheet/actions-page'}
-				className={`${page.actions && 'text-red-600'}`}
-			>
-				ACTIONS
-			</Link>
-			<button className='w-fit h-fit' onClick={props.setSettingsIsOpen}>
-				SETTINGS
-			</button>
+			<div className='flex justify-around'>
+				<Link
+					href={'/sheet/general-page'}
+					className={`${page.overview && 'text-red-600'}`}
+				>
+					OVERVIEW
+				</Link>
+				<Link
+					href={'/sheet/actions-page'}
+					className={`${page.actions && 'text-red-600'}`}
+				>
+					ACTIONS
+				</Link>
+				<button className='w-fit h-fit' onClick={props.setSettingsIsOpen}>
+					SETTINGS
+				</button>
+			</div>
 		</header>
 	)
 }
