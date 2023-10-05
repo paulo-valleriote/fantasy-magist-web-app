@@ -15,7 +15,11 @@ const config: Config = {
 				'shield-vector': 'url("/shield-vector.svg")',
 				'proficiency-border-vector': 'url("/proficiency-border.svg")',
 				'stats-border-vector': 'url("/stats-border-vector.svg")',
-				'attribute-border-vector': 'url("/attribute-border.svg")'
+				'attribute-border-vector': 'url("/attribute-border.svg")',
+				'double-ornamental-border-vector': 'url("/double-ornaments-box.svg")',
+				'left-ornamental-border-vector': 'url("/left-ornaments-box.svg")',
+				'right-ornamental-border-vector': 'url("/right-ornaments-box.svg")',
+				'sheet-header-vector': 'url("/sheet-header.svg")'
 			},
 			boxShadow: {
 				'3xl-inner': 'inset 0px 0px 95px 10px rgba(0, 0, 0, 0.3)',
