@@ -1,7 +1,10 @@
+'use client'
 import DefaultTextInput from '@/app/components/input/DefaultTextInput'
+import { CharacterContext } from '@/contexts/CharacterContext'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
+
+import {  useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 interface ISheetHeaderProps {
 	settingsIsOpen: boolean
@@ -10,6 +13,7 @@ interface ISheetHeaderProps {
 
 export default function SheetHeader(props: ISheetHeaderProps) {
 	const pathname = usePathname()
+	const {character} = useContext(CharacterContext)
 
 	const [page, setPage] = useState({
 		overview: true,
@@ -30,16 +34,16 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 	useMemo(() => changeCurrentPage(), [changeCurrentPage])
 
 	return (
-		<header className='flex flex-col justify-between gap-4'>
-			<div className='flex gap-4'>
-				<DefaultTextInput placeholder='NAME' />
+		<header className='flex flex-col justify-between gap-4 text-sm'>
+			<div className='flex gap-4 mb-4 mt-[-1rem]'>
+				<DefaultTextInput placeholder={character?.name ?? 'NAME'} />
 				<div className='grid grid-cols-3 grid-rows-2 gap-2'>
-					<DefaultTextInput placeholder='RACE' />
-					<DefaultTextInput placeholder='CLASS & LEVEL' />
-					<DefaultTextInput placeholder='HEIGHT' />
-					<DefaultTextInput placeholder='BACKGROUND' />
+					<DefaultTextInput placeholder={character?.race ?? 'RACE'} />
+					<DefaultTextInput placeholder={character?.class ?? 'CLASS & LEVEL'} />
+					<DefaultTextInput placeholder={character?.height ?? 'HEIGHT'} />
+					<DefaultTextInput placeholder={'BACKGROUND'} />
 					<DefaultTextInput placeholder='' />
-					<DefaultTextInput placeholder='WEIGHT' />
+					<DefaultTextInput placeholder={character?.weight ?? 'WEIGHT'} />
 				</div>
 			</div>
 			<div className='flex justify-around'>
