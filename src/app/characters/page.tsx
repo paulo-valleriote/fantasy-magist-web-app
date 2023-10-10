@@ -2,19 +2,20 @@
 
 import { useRouter } from 'next/navigation'
 import CharacterCard from './components/CharacterCard'
-import { useContext} from 'react'
+import { useContext } from 'react'
 import { CharacterContext } from '@/contexts/CharacterContext'
 import { characters } from '../../../fakedb'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function Index() {
 	const router = useRouter()
-	const {setCharacter} = useContext(CharacterContext)
+	const { updateAll } = useContext(CharacterContext)
 	const redirectToSheets = () => router.push('/sheet/general-page')
 
 	const placeholderCharacters = [...characters]
 
-	const selectCharacter = (id: number) => setCharacter(placeholderCharacters[id-1])
+	const selectCharacter = (id: number) =>
+		updateAll(placeholderCharacters[id - 1])
 
 	return (
 		<>
@@ -35,8 +36,17 @@ export default function Index() {
 						<button className='p-4 h-1/2 bg-red-600'>new character</button>
 					</div>
 					<div className='grid grid-flow-col grid-cols-4 grid-rows-2 w-screen gap-2 gap-y-10'>
-						{placeholderCharacters.map(character => (
-							<motion.div key={character.id} initial={{opacity: 0, x: -50}} animate={{opacity: 1, x: 0}} transition={{duration: 0.6, ease: 'easeOut', delay: 0.2}} whileHover={{scale: 1.1, transition: {duration: 0.5, ease: 'backInOut'}}}>
+						{placeholderCharacters.map((character) => (
+							<motion.div
+								key={character.id}
+								initial={{ opacity: 0, x: -50 }}
+								animate={{ opacity: 1, x: 0 }}
+								transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+								whileHover={{
+									scale: 1.1,
+									transition: { duration: 0.5, ease: 'backInOut' },
+								}}
+							>
 								<CharacterCard
 									name={character.name}
 									height={character.height}

@@ -3,7 +3,7 @@ import SheetDefaultLayout from '../components/SheetDefaultLayout'
 
 export default function ActionsPage() {
 	return (
-		<SheetDefaultLayout>
+		<>
 			<section className='flex flex-col items-center gap-4 border-2 border-gray-700 rounded-lg p-4'>
 				<table id='attacks' className='w-full'>
 					<thead>
@@ -61,6 +61,6 @@ export default function ActionsPage() {
 				/>
 				<label htmlFor='equipments'>EQUIPMENTS</label>
 			</section>
-		</SheetDefaultLayout>
+		</>
 	)
 }

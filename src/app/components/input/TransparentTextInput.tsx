@@ -1,5 +1,6 @@
 interface ITransparentTextInputProps {
 	onClick?: () => any
+	onChange?: (event: React.FormEvent<any>) => any
 	placeholder?: string
 	value?: string
 	extraClasses?: string
@@ -17,6 +18,7 @@ export default function TransparentTextInput(
 			id={props.id}
 			placeholder={props.placeholder}
 			onClick={props.onClick}
+			onChange={props.onChange}
 		/>
 	)
 }
