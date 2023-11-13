@@ -1,5 +1,5 @@
 'use client'
-import DefaultTextInput from '@/app/components/input/DefaultTextInput'
+import DefaultTextInput from '@/pages/components/input/DefaultTextInput'
 import { CharacterContext, CharacterProps } from '@/contexts/CharacterContext'
 import useForm from '@/hook/useForm'
 import Link from 'next/link'
@@ -51,7 +51,7 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 	useMemo(() => changeCurrentPage(), [changeCurrentPage])
 
 	return (
-		<header className='flex flex-col justify-between gap-4 text-sm'>
+		<header className='absolute top-12 flex flex-col justify-between gap-4 text-sm'>
 			<div className='flex gap-4 mb-4 mt-[-1rem]'>
 				<DefaultTextInput
 					placeholder='NAME'

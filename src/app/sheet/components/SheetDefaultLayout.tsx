@@ -19,13 +19,15 @@ export default function SheetDefaultLayout({
 
 	return (
 		<>
-			<div className='flex justify-center items-center m-[-2rem] mt-8 w-screen max-h-screen h-screen py-24'>
-				<div className='flex flex-col p-6 px-16 justify-around bg-gray-300 h-full w-11/12 rounded-lg'>
+			<div className='flex justify-center items-center m-[-2rem] mt-8 max-h-screen h-screen w-screen py-24'>
+				<div className='relative flex flex-col py-12 px-16 justify-around bg-gray-300 h-full w-11/12 rounded-lg'>
 					<SheetHeader
 						settingsIsOpen={settingsIsOpen}
 						setSettingsIsOpen={handleSettingsModalState}
 					/>
-					{children}
+					<div className='mt-24'>
+						{children}
+					</div>
 				</div>
 			</div>
 			{settingsIsOpen && (
@@ -46,10 +48,12 @@ const SettingsModal = ({
 			onClick={handleModalState}
 		/>
 		<div className='absolute top-0 w-screen h-screen  grid place-content-center'>
-			<div className='flex flex-col w-fit h-fit p-12 bg-white rounded-lg z-50'>
+			<div className='flex flex-col gap-2 w-fit h-fit py-14 px-28 bg-white rounded-lg z-50'>
 				<button>Save Sheet</button>
+				<hr/>
 				<button>Delete Sheet</button>
-				<Link href='/characters'>Back to characters selection</Link>
+				<hr/>
+				<Link href='/characters'>Back to selection</Link>
 			</div>
 		</div>
 	</>

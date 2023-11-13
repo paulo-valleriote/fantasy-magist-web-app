@@ -24,129 +24,136 @@ export default function Sheet() {
 				))}
 			</section>
 
-			<section className='flex gap-4'>
-				<SheetProficiencyCard profieciesList={['Athletics']} />
-				<SheetProficiencyCard
-					profieciesList={['Acrobatics', 'Sleight of H.', 'Stealh']}
-				/>
+			<section className='flex justify-around gap-4'>
+				<div className='flex flex-col gap-4 justify-center'>
+					<div className='flex gap-2'>
+					<SheetProficiencyCard profieciesList={['Athletics']} />
+					<SheetProficiencyCard
+						profieciesList={['Acrobatics', 'Sleight of H.', 'Stealh']}
+					/>
+					</div>
 
-				<div className='flex  w-full'>
-					<div className='flex flex-wrap gap-2 text-xs justify-center items-center'>
-						<div className='flex flex-col bg-proficiency-border-vector bg-no-repeat bg-contain bg-gray-200 py-4 px-4 items-center w-[5.5rem] text-center'>
-							<input
-								id='totalHitDice'
-								type='text'
-								className='bg-transparent text-center border-b-[1px] border-gray-400 w-full'
-							/>
-							<label htmlFor='totalHitDice'>TOTAL HIT DICE</label>
-						</div>
-
-						<div className='flex flex-col bg-proficiency-border-vector bg-no-repeat bg-contain bg-gray-200 py-6 px-4 items-center  w-[5.5rem] text-center'>
+					<div className='flex gap-4'>
+						<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
 							<input
 								id='hitDice'
 								type='text'
-								className='bg-transparent text-center border-b-[1px] border-gray-400 w-full'
+								className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
 							/>
-							<label htmlFor='hitDice'>HIT DICE</label>
+							<label htmlFor='hitDice'>PROFIENCY BONUS</label>
+						</div>
+
+						<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
+							<input
+								id='hitDice'
+								type='text'
+								className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
+							/>
+							<label htmlFor='hitDice'>INITIATIVE BONUS</label>
+						</div>
+
+						<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
+							<input
+								id='hitDice'
+								type='text'
+								className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
+							/>
+							<label htmlFor='hitDice'>SPEED</label>
 						</div>
 					</div>
+
 				</div>
 
-				<SheetProficiencyCard
-					profieciesList={[
-						'Arcana',
-						'History',
-						'Investigation',
-						'Nature',
-						'Religion',
-					]}
-				/>
-				<SheetProficiencyCard
-					profieciesList={[
-						'Animal H.',
-						'Insight',
-						'Medicine',
-						'Perception',
-						'Survival',
-					]}
-				/>
-				<SheetProficiencyCard
-					profieciesList={[
-						'Deception',
-						'Intimidation',
-						'Performance',
-						'Persuasion',
-					]}
-				/>
-			</section>
-
-			<section className='flex text-xs justify-between'>
-				<div className='flex gap-4'>
-					<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
+				<div className='flex flex-col gap-2 text-xs justify-center items-center'>
+					<div className='flex flex-col bg-proficiency-border-vector bg-no-repeat bg-contain bg-gray-200 py-4 px-4 items-center w-[5.5rem] text-center'>
 						<input
-							id='hitDice'
+							id='totalHitDice'
 							type='text'
-							className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
+							className='bg-transparent text-center border-b-[1px] border-gray-400 w-full'
 						/>
-						<label htmlFor='hitDice'>PROFIENCY BONUS</label>
+						<label htmlFor='totalHitDice'>TOTAL HIT DICE</label>
 					</div>
 
-					<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
+					<div className='flex flex-col bg-proficiency-border-vector bg-no-repeat bg-contain bg-gray-200 py-6 px-4 items-center  w-[5.5rem] text-center'>
 						<input
 							id='hitDice'
 							type='text'
-							className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
+							className='bg-transparent text-center border-b-[1px] border-gray-400 w-full'
 						/>
-						<label htmlFor='hitDice'>INITIATIVE BONUS</label>
-					</div>
-
-					<div className='bg-stats-border-vector bg-no-repeat bg-contain w-28 text-center flex flex-col p-8 items-center justify-center'>
-						<input
-							id='hitDice'
-							type='text'
-							className='w-16 text-center bg-transparent border-b-[1px] border-gray-400'
-						/>
-						<label htmlFor='hitDice'>SPEED</label>
+						<label htmlFor='hitDice'>HIT DICE</label>
 					</div>
 				</div>
 
-				<div className='relative flex justify-center'>
-					<div className='flex flex-col text-center bg-right-ornamental-border-vector bg-no-repeat bg-contain items-center w-1/3 justify-center p-8'>
-						<input
-							id='hitDice'
-							type='text'
-							className='w-6 text-center  bg-transparent border-b-[1px] border-gray-400'
+				<div className='flex flex-col gap-4 justify-center'>
+					<div className='flex gap-6'>
+						<SheetProficiencyCard
+							profieciesList={[
+								'Arcana',
+								'History',
+								'Investigation',
+								'Nature',
+								'Religion',
+							]}
 						/>
-						<label htmlFor='hitDice'>MAX HP</label>
-					</div>
+						<SheetProficiencyCard
+							profieciesList={[
+								'Animal H.',
+								'Insight',
+								'Medicine',
+								'Perception',
+								'Survival',
+							]}
+						/>
+						<SheetProficiencyCard
+							profieciesList={[
+								'Deception',
+								'Intimidation',
+								'Performance',
+								'Persuasion',
+							]}
+						/>
+					</div>	
 
-					<div className='flex flex-col text-center bg-double-ornamental-border-vector bg-no-repeat bg-contain items-center  w-1/3  justify-center p-8'>
-						<input
-							id='hitDice'
-							type='text'
-							className='w-6 text-center bg-transparent border-b-[1px] border-gray-400'
-						/>
-						<label htmlFor='hitDice'>HP</label>
-					</div>
+					<div className='flex gap-4 justify-around'>
+						<div className='relative flex justify-center'>
+							<div className='flex flex-col text-center bg-right-ornamental-border-vector bg-no-repeat bg-contain items-center w-1/3 justify-center p-8'>
+								<input
+									id='hitDice'
+									type='text'
+									className='w-6 text-center  bg-transparent border-b-[1px] border-gray-400'
+								/>
+								<label htmlFor='hitDice'>MAX HP</label>
+							</div>
 
-					<div className='flex flex-col text-center bg-left-ornamental-border-vector bg-no-repeat bg-contain items-center  w-1/3  justify-center p-8'>
-						<input
-							id='hitDice'
-							type='text'
-							className='w-6 text-center bg-transparent border-b-[1px] border-gray-400'
-						/>
-						<label htmlFor='hitDice'>TEMP. HP</label>
-					</div>
-				</div>
+							<div className='flex flex-col text-center bg-double-ornamental-border-vector bg-no-repeat bg-contain items-center  w-1/3  justify-center p-8'>
+								<input
+									id='hitDice'
+									type='text'
+									className='w-6 text-center bg-transparent border-b-[1px] border-gray-400'
+								/>
+								<label htmlFor='hitDice'>HP</label>
+							</div>
 
-				<div className='relative bg-shield-vector bg-no-repeat bg-contain w-fit flex flex-col items-center justify-center gap-2'>
-					<div className='flex flex-col w-24 items-center'>
-						<input
-							id='hitDice'
-							type='text'
-							className='w-1/2 text-center bg-transparent border-b-[1px] border-gray-400'
-						/>
-						<label htmlFor='hitDice'>AC</label>
+							<div className='flex flex-col text-center bg-left-ornamental-border-vector bg-no-repeat bg-contain items-center  w-1/3  justify-center p-8'>
+								<input
+									id='hitDice'
+									type='text'
+									className='w-6 text-center bg-transparent border-b-[1px] border-gray-400'
+								/>
+								<label htmlFor='hitDice'>TEMP. HP</label>
+							</div>
+						</div>
+
+						<div className='relative bg-shield-vector bg-no-repeat bg-contain w-fit flex flex-col items-center justify-center gap-2'>
+							<div className='flex flex-col w-24 items-center'>
+								<input
+									id='hitDice'
+									type='text'
+									className='w-1/2 text-center bg-transparent border-b-[1px] border-gray-400'
+								/>
+								<label htmlFor='hitDice'>AC</label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
