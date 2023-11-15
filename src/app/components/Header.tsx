@@ -2,10 +2,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import appLogo from './../../../public/logo-fantasy-magist.svg'
-import { usePathname } from 'next/navigation'
+import { useContext } from 'react'
+import { UserDetailsContext } from '@/contexts/UserContext'
 
 export default function Header() {
-	const loginOrRegisterLink = usePathname() !== '/sign/login'
+	const { userDetails } = useContext(UserDetailsContext)
+
+	const logged = localStorage.getItem('logged')
 
 	return (
 		<header className='fixed z-50 w-screen px-28'>
@@ -15,12 +18,21 @@ export default function Header() {
 				</Link>
 				<div className='flex gap-8 items-center'>
 					<Link href='/characters'>Characters</Link>
-					<Link
-						href={loginOrRegisterLink ? '/sign/login' : '/sign/register'}
-						className='px-4 py-2 border-white border-[1px] rounded-md'
-					>
-						{loginOrRegisterLink ? 'Sign In' : 'Sign Up'}
-					</Link>
+					{!userDetails.isLogged && !logged ? (
+						<Link
+							href={'/sign/register'}
+							className='px-4 py-2 border-white border-[1px] rounded-md'
+						>
+							Sign Up
+						</Link>
+					) : (
+						<Link
+							href={'/profile'}
+							className='px-4 py-2 border-white border-[1px] rounded-md'
+						>
+							Profile
+						</Link>
+					)}
 				</div>
 			</div>
 		</header>
