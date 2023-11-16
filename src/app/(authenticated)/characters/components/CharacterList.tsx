@@ -1,19 +1,13 @@
-import { Suspense, useContext } from 'react'
-import { UserDetailsContext } from '@/contexts/UserContext'
+import { Suspense } from 'react'
 import { cookies } from 'next/headers'
+import ListContent from './ListContent'
 
-interface CharacterListProps {
-	children: React.ReactNode | React.ReactNode[]
-}
-
-export default function CharacterList({ children }: CharacterListProps) {
+export default async function CharacterList() {
 	return (
 		<>
-			{!cookies().get('token') ? (
-				<p className='opacity-30 text-center p-20'>Empty List</p>
-			) : (
-				<Suspense fallback={<h2>Carregando...</h2>}>{children}</Suspense>
-			)}
+			<Suspense fallback={<h2>Carregando...</h2>}>
+				<ListContent />
+			</Suspense>
 		</>
 	)
 }

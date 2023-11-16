@@ -7,7 +7,7 @@ import { cookies } from 'next/headers'
 export default async function LoginForm() {
 	const loginRequest = async ({ login, password }: SignInputs) => {
 		'use server'
-		await fetch(process.env.PUBLIC_URL + '/api/auth/login', {
+		const response = await fetch(process.env.PUBLIC_URL + '/api/auth/login', {
 			method: 'post',
 			body: JSON.stringify({ login, password }),
 			cache: 'no-store',
@@ -16,7 +16,7 @@ export default async function LoginForm() {
 			},
 		})
 
-		console.log(cookies().get('token'))
+		cookies().set('token', response.headers.get('token') || '')
 	}
 
 	return (

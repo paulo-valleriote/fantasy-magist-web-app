@@ -1,7 +1,6 @@
 import CharacterList from './components/CharacterList'
-import ListContent from './components/ListContent'
 
-export default function Index() {
+export default async function Index() {
 	return (
 		<>
 			<div className='bg-black w-screen m-[-2rem] mt-20 p-6 px-28'>
@@ -21,9 +20,7 @@ export default function Index() {
 						<button className='p-4 h-1/2 bg-red-600'>new character</button>
 					</div>
 
-					<CharacterList>
-						<ListContent />
-					</CharacterList>
+					<CharacterList />
 				</div>
 			</div>
 			<div className='absolute bg-black w-screen h-screen m-[-2rem] opacity-20 -z-40' />
