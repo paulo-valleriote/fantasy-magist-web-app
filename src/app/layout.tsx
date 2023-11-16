@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google'
 
 import heroBackground from './../../public/bg-fantasy-magist.png'
 
-import { getCookie } from 'cookies-next'
-
 import './globals.css'
 
 import Image from 'next/image'
@@ -18,21 +16,6 @@ export const metadata: Metadata = {
 	description: 'Online Dungeons and Dragons Sheet Manager',
 }
 
-const tokenIsValid = () => {
-	const token = getCookie('Token')
-	const expiration = getCookie('ExpiresAt')
-
-	if (!token) {
-		return false
-	}
-
-	if (new Date(expiration || '') < new Date()) {
-		return false
-	}
-
-	return true
-}
-
 export default function RootLayout({
 	children,
 }: {
@@ -43,7 +26,7 @@ export default function RootLayout({
 			<body
 				className={`${inter.className} p-6 flex justify-center w-screen h-screen overflow-hidden`}
 			>
-				{!tokenIsValid ? <Header /> : 'Logado'}
+				<Header />
 				<CharacterContextProvider>{children}</CharacterContextProvider>
 				<div className='w-screen h-screen bg-black absolute top-0 opacity-10 -z-30' />
 				<Image

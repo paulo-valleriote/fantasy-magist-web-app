@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    DB_HOST: "http://localhost:8080"
+    API_URL: "http://localhost:8080"
   },
+  experimental: {
+    serverActions: true
+  }
 }
 
 module.exports = nextConfig
