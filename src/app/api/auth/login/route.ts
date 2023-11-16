@@ -14,8 +14,8 @@ export async function POST(request: NextRequest) {
 	})
 
 	const cookieStorage = cookies()
-	cookieStorage.set('token', response.headers.get('tokenstring') as string, {
-		expires: new Date(response.headers.get('tokenexpiration') || ''),
+	cookieStorage.set('token', response.headers.get('token') as string, {
+		expires: new Date(response.headers.get('expiresat') || ''),
 	})
 
 	return NextResponse.json({
