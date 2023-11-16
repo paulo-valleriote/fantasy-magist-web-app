@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import CharacterCard from './CharacterCard'
 import { CharacterContext } from '@/contexts/CharacterContext'
 import { useContext } from 'react'
-import { characters } from '../../../../fakedb'
+import { characters } from '../../../../../fakedb'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context'
 
 interface CharacterListProps {

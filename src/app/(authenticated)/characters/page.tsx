@@ -4,6 +4,10 @@ import { Suspense, useContext } from 'react'
 import CharacterList from './components/CharacterList'
 import { UserDetailsContext } from '@/contexts/UserContext'
 import { useRouter } from 'next/navigation'
+import CharacterCard from './components/CharacterCard'
+import { CharacterContext } from '@/contexts/CharacterContext'
+import { characters } from '../../../../fakedb'
+import { motion } from 'framer-motion'
 
 export default function Index() {
 	const router = useRouter()
