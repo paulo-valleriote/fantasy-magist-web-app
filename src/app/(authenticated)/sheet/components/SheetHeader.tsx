@@ -1,5 +1,5 @@
 'use client'
-import DefaultTextInput from '@/pages/components/input/DefaultTextInput'
+import DefaultTextInput from '@/app/components/input/DefaultTextInput'
 import { CharacterContext, CharacterProps } from '@/contexts/CharacterContext'
 import useForm from '@/hook/useForm'
 import Link from 'next/link'
@@ -39,10 +39,10 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 
 	const changeCurrentPage = useCallback(() => {
 		switch (pathname) {
-			case '/sheet/general-page':
+			case '/sheet/overview':
 				setPage({ overview: true, actions: false })
 				break
-			case '/sheet/actions-page':
+			case '/sheet/actions':
 				setPage({ overview: false, actions: true })
 				break
 		}
@@ -95,13 +95,13 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 			</div>
 			<div className='flex justify-around'>
 				<Link
-					href={'/sheet/general-page'}
+					href={'/sheet/overview'}
 					className={`${page.overview && 'text-red-600'}`}
 				>
 					OVERVIEW
 				</Link>
 				<Link
-					href={'/sheet/actions-page'}
+					href={'/sheet/actions'}
 					className={`${page.actions && 'text-red-600'}`}
 				>
 					ACTIONS

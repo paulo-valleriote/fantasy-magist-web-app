@@ -1,32 +1,31 @@
 'use client'
+import { CharacterContext, CharacterProps } from '@/contexts/CharacterContext'
 import { motion } from 'framer-motion'
+import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface ICharacterCardProps {
-	id?: string
-	name?: string
-	height?: string
-	weight?: string
-	race?: string
-	characterClass?: string
+	characterProps: CharacterProps
 }
 
-export default function CharacterCard({
-	id = '0',
-	name = 'John Doe',
-	height = '1.75m',
-	weight = '70kg',
-	race = 'human',
-	characterClass = 'fighter',
-}: ICharacterCardProps) {
+export default function CharacterCard({ characterProps }: ICharacterCardProps) {
+	const router = useRouter()
+	const { characterGeneralDispatcher } = useContext(CharacterContext)
+
 	const character = {
-		id: id,
-		name: name,
+		id: characterProps.id,
+		name: characterProps.name,
 		characteristics: {
-			height: height,
-			weight: weight,
-			race: race,
-			class: characterClass,
+			height: characterProps.height,
+			weight: characterProps.weight,
+			race: characterProps.race,
+			class: characterProps.class,
 		},
+	}
+
+	const handleCharacterSelection = () => {
+		characterGeneralDispatcher(characterProps)
+		router.push('/sheet/overview')
 	}
 
 	return (
@@ -40,7 +39,10 @@ export default function CharacterCard({
 				transition: { duration: 0.5, ease: 'backInOut' },
 			}}
 		>
-			<div className='grid grid-rows-2 bg-black w-2/3 cursor-pointer'>
+			<div
+				onClick={handleCharacterSelection}
+				className='grid grid-rows-2 bg-black w-2/3 cursor-pointer'
+			>
 				<div className='flex place-content-center items-center shadow-3xl-inner rounded-t-lg shadow-red-500'>
 					Character Image
 				</div>
@@ -53,7 +55,9 @@ export default function CharacterCard({
 									<span className='text-xs opacity-75'>
 										{characteristicsPair[0]}
 									</span>
-									<span className='text-md'>{characteristicsPair[1]}</span>
+									<span className='text-md'>
+										{characteristicsPair[1] || 'not defined'}
+									</span>
 								</div>
 							)
 						)}

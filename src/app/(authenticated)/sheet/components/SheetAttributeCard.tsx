@@ -1,4 +1,4 @@
-import TransparentTextInput from '@/pages/components/input/TransparentTextInput'
+import TransparentTextInput from '@/app/components/input/TransparentTextInput'
 import {
 	CharacterAttributeStateDispatcher,
 	CharacterContext,

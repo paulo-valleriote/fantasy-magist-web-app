@@ -16,7 +16,14 @@ export default async function LoginForm() {
 			},
 		})
 
-		cookies().set('token', response.headers.get('token') || '')
+		const convertedResponse = await response.json()
+
+		cookies().set({
+			name: 'token',
+			value: convertedResponse.headers.jwtToken,
+			expires: new Date(convertedResponse.headers.jwtExpiration),
+			httpOnly: true,
+		})
 	}
 
 	return (

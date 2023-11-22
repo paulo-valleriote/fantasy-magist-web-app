@@ -7,7 +7,7 @@ interface CharacterContextProviderProps {
 
 interface CharacterContextProps {
 	character: CharacterProps
-	updateAll: React.Dispatch<React.SetStateAction<CharacterProps>>
+	characterGeneralDispatcher: (props: CharacterProps) => void
 	characterStateDispatcher: CharacterStateDispatcher
 	characterAttributeStateDispatcher: CharacterAttributeStateDispatcher
 }
@@ -21,7 +21,7 @@ interface CharacterAttributes {
 	charisma: number
 }
 export interface CharacterProps {
-	id: number
+	id: string
 	name: string
 	level: number
 	class: string
@@ -36,7 +36,7 @@ export interface CharacterProps {
 }
 
 const initialState = {
-	id: 0,
+	id: '',
 	name: '',
 	level: 0,
 	armorClass: 0,
@@ -73,7 +73,7 @@ export type CharacterAttributeStateDispatcher = (
 
 export const CharacterContext = createContext<CharacterContextProps>({
 	character: initialState,
-	updateAll: () => {},
+	characterGeneralDispatcher: (props: CharacterProps) => {},
 	characterStateDispatcher: (
 		key: KeyOfCharacterProps,
 		value: ValueOfCharacterProps
@@ -106,11 +106,14 @@ export function CharacterContextProvider({
 			},
 		})
 
+	const characterGeneralDispatcher = (props: CharacterProps) =>
+		setCharacter(props)
+
 	return (
 		<CharacterContext.Provider
 			value={{
 				character,
-				updateAll: setCharacter,
+				characterGeneralDispatcher,
 				characterStateDispatcher,
 				characterAttributeStateDispatcher,
 			}}
