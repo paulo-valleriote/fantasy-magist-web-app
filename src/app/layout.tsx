@@ -34,8 +34,7 @@ export default function RootLayout({
 					placeholder='blur'
 					alt='bg'
 					fill
-					objectFit='cover'
-					style={{ zIndex: -50 }}
+					style={{ zIndex: -50, objectFit: 'cover' }}
 					quality={100}
 				/>
 			</body>
