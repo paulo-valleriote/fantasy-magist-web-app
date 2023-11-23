@@ -51,7 +51,7 @@ export default function SheetHeader(props: ISheetHeaderProps) {
 	useMemo(() => changeCurrentPage(), [changeCurrentPage])
 
 	return (
-		<header className='absolute top-12 flex flex-col justify-between gap-4 text-sm'>
+		<header className='flex flex-col justify-between gap-4 text-sm'>
 			<div className='flex gap-4 mb-4 mt-[-1rem]'>
 				<DefaultTextInput
 					placeholder='NAME'
