@@ -1,24 +1,19 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+import RedirectButton from './RedirectButton'
 
 export default async function HeaderButtons() {
 	return (
 		<>
-			<Link href='/characters'>Characters</Link>
+			<RedirectButton to={'/characters'} content={'Characters'} />
 			{!cookies().get('token') ? (
-				<Link
-					href={'/sign/register'}
-					className='px-4 py-2 border-white border-[1px] rounded-md'
-				>
-					Sign Up
-				</Link>
+				<RedirectButton
+					to={'/sign/register'}
+					content={'Sign Up'}
+					withBorder={true}
+				/>
 			) : (
-				<Link
-					href={'/profile'}
-					className='px-4 py-2 border-white border-[1px] rounded-md'
-				>
-					Profile
-				</Link>
+				<RedirectButton to={'/profile'} content={'Profile'} withBorder={true} />
 			)}
 		</>
 	)
