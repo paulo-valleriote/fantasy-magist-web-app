@@ -1,5 +1,7 @@
 import PrivateRoute from '@/app/components/PrivateRoute'
 import CharacterList from './components/CharacterList'
+import CharacterCreationModal from './components/CharacterCreationModal'
+import CharacterCreation from './components/CharacterCreation'
 
 export default async function Index() {
 	return (
@@ -18,7 +20,7 @@ export default async function Index() {
 								<button className='w-12 h-12 border-2 border-red-600'>a</button>
 							</div>
 						</div>
-						<button className='p-4 h-1/2 bg-red-600'>new character</button>
+						<CharacterCreation />
 					</div>
 
 					<CharacterList />
