@@ -1,8 +1,9 @@
+import PrivateRoute from '@/app/components/PrivateRoute'
 import CharacterList from './components/CharacterList'
 
 export default async function Index() {
 	return (
-		<>
+		<PrivateRoute>
 			<div className='bg-black w-screen m-[-2rem] mt-20 p-6 px-28'>
 				<div className='flex flex-col gap-12 text-white'>
 					<div className='flex justify-between items-center'>
@@ -24,6 +25,6 @@ export default async function Index() {
 				</div>
 			</div>
 			<div className='absolute bg-black w-screen h-screen m-[-2rem] opacity-20 -z-40' />
-		</>
+		</PrivateRoute>
 	)
 }
