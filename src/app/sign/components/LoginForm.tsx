@@ -3,6 +3,7 @@ import FormTemplate from './FormTemplate'
 import TextInput from './TextInputs'
 import { SignInputs } from './SignForm'
 import { cookies } from 'next/headers'
+import { RedirectType, redirect } from 'next/navigation'
 
 export default async function LoginForm() {
 	const loginRequest = async ({ login, password }: SignInputs) => {
@@ -24,6 +25,8 @@ export default async function LoginForm() {
 			expires: new Date(convertedResponse.headers.jwtExpiration),
 			httpOnly: true,
 		})
+
+		redirect('/characters', RedirectType.push)
 	}
 
 	return (

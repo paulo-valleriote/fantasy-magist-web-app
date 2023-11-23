@@ -2,6 +2,7 @@ import Link from 'next/link'
 import FormTemplate from './FormTemplate'
 import { SignInputs } from './SignForm'
 import TextInput from './TextInputs'
+import { RedirectType, redirect } from 'next/navigation'
 
 export default async function RegisterForm() {
 	const registerRequest = async ({ login, password, username }: SignInputs) => {
@@ -14,6 +15,8 @@ export default async function RegisterForm() {
 				'Content-Type': 'application/json',
 			},
 		})
+
+		redirect('/sign/register', RedirectType.push)
 	}
 
 	return (
