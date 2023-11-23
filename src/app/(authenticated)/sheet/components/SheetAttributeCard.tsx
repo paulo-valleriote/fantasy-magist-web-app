@@ -5,7 +5,7 @@ import {
 	CharacterProps,
 	CharacterStateDispatcher,
 } from '@/contexts/CharacterContext'
-import useForm from '@/hook/useForm'
+import useForm from '@/hooks/useForm'
 import React, { Dispatch, SetStateAction, useContext, useEffect } from 'react'
 
 interface ISheetAttributeCardProps {

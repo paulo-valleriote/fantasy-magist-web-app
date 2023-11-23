@@ -1,7 +1,7 @@
 'use client'
 import DefaultTextInput from '@/app/components/input/DefaultTextInput'
 import { CharacterContext, CharacterProps } from '@/contexts/CharacterContext'
-import useForm from '@/hook/useForm'
+import useForm from '@/hooks/useForm'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
