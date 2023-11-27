@@ -34,7 +34,7 @@ export default function TransparentTextInput(
 					type={props.type || 'text'}
 					min={props.numberRange?.min || undefined}
 					max={props.numberRange?.max || undefined}
-					className={`bg-transparent border-b-[1px] border-gray-400 ${props.extraClasses}`}
+					className={`bg-transparent px-2 py-1 border-b-[1px] border-gray-400 ${props.extraClasses}`}
 					value={props.value}
 					id={props.id}
 					placeholder={props.placeholder}
