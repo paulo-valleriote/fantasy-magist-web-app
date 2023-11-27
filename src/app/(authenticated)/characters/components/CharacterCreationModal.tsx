@@ -1,7 +1,9 @@
-'use client'
+import createCharacter from '@/actions/createCharacter'
+import FormTemplate from '@/app/components/FormTemplate'
+import FormTextInput from '@/app/components/input/FormTextInput'
+import FormSelectInput from '@/app/components/input/FormSelectInput'
 import Modal from '@/app/components/Modal'
-import TransparentTextInput from '@/app/components/input/TransparentTextInput'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export default function CharacterCreationModal({
 	isOpen,
@@ -10,6 +12,33 @@ export default function CharacterCreationModal({
 	isOpen: boolean
 	setIsOpen: Dispatch<SetStateAction<boolean>>
 }) {
+	const levels = []
+	for (let i = 0; i < 20; i++) {
+		levels.push(i)
+	}
+
+	const convertFormData = async (
+		formFields: string[],
+		formData: FormData,
+		request: (props: any) => Promise<void>
+	) => {
+		const eventData: any = {}
+
+		for (const field of formFields) {
+			eventData[field] = formData.get(field)?.toString()
+		}
+
+		request(eventData)
+	}
+
+	const handleFormAction = async (formData: FormData) => {
+		convertFormData(
+			['name', 'levels', 'species', 'classes'],
+			formData,
+			createCharacter
+		)
+	}
+
 	return (
 		<Modal state={isOpen} dispatchFunction={setIsOpen}>
 			<div className='flex flex-col gap-6 px-6 pb-8 pt-2'>
@@ -20,29 +49,52 @@ export default function CharacterCreationModal({
 					<h3 className='opacity-75'>First Steps</h3>
 				</div>
 
-				<form>
-					<div className='flex flex-col gap-6 justify-around items-center'>
-						<div className='flex items-end gap-6'>
-							<TransparentTextInput label={{ content: 'Name' }} />
-
-							<select className='py-3 px-4 h-fit rounded-md shadow-sm'>
-								<option defaultChecked>Species</option>
-							</select>
+				<FormTemplate handleFormAction={handleFormAction}>
+					<div className='flex flex-col gap-6 items-center'>
+						<div className='flex gap-6'>
+							<FormTextInput
+								placeholder='Character Name'
+								registerField={'name'}
+								registerConfigurations={{ required: true }}
+							/>
 						</div>
 
 						<div className='flex items-end gap-6'>
-							<TransparentTextInput
-								label={{ content: 'Level' }}
-								type='number'
-								numberRange={{ min: 1, max: 20 }}
-							/>
+							<FormSelectInput
+								registerField='levels'
+								registerConfigurations={{ required: true }}
+							>
+								<option defaultChecked>Levels</option>
+								{levels.map((currLevel) => (
+									<option key={'level - ' + currLevel}>{currLevel}</option>
+								))}
+							</FormSelectInput>
 
-							<select className='py-3 px-4 h-fit rounded-md shadow-sm'>
+							<FormSelectInput
+								registerField='species'
+								registerConfigurations={{ required: true }}
+							>
+								<option defaultChecked>Species</option>
+							</FormSelectInput>
+
+							<FormSelectInput
+								registerField='classes'
+								registerConfigurations={{ required: true }}
+							>
 								<option defaultChecked>Classes</option>
-							</select>
+							</FormSelectInput>
+						</div>
+
+						<div className='flex items-end gap-6'>
+							<button className='px-6 py-3 bg-gray-50 rounded-md'>
+								Cancel
+							</button>
+							<button className='px-6 py-3 bg-red-500 text-white rounded-md'>
+								Create
+							</button>
 						</div>
 					</div>
-				</form>
+				</FormTemplate>
 			</div>
 		</Modal>
 	)

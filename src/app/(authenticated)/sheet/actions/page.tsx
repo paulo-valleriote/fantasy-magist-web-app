@@ -1,5 +1,4 @@
 'use client'
-import SheetDefaultLayout from '../components/SheetDefaultLayout'
 
 export default function ActionsPage() {
 	return (
