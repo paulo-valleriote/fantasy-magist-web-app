@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import FormTemplate from './FormTemplate'
-import TextInput from './TextInputs'
+import FormTemplate from '../../components/FormTemplate'
+import TextInput from '../../components/input/FormTextInput'
 import { SignInputs } from './SignForm'
 import { cookies } from 'next/headers'
 import { RedirectType, redirect } from 'next/navigation'
+import convertFormData from '@/actions/convertFormData'
 
 export default async function LoginForm() {
-	const loginRequest = async ({ login, password }: SignInputs) => {
+	const loginRequest = async (data: FormData) => {
 		'use server'
+		const { login, password }: SignInputs = await convertFormData(data)
+
 		const response = await fetch(process.env.PUBLIC_URL + '/api/auth/login', {
 			method: 'post',
 			body: JSON.stringify({ login, password }),

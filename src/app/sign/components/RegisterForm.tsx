@@ -1,12 +1,17 @@
 import Link from 'next/link'
-import FormTemplate from './FormTemplate'
+import FormTemplate from '../../components/FormTemplate'
 import { SignInputs } from './SignForm'
-import TextInput from './TextInputs'
+import TextInput from '../../components/input/FormTextInput'
 import { RedirectType, redirect } from 'next/navigation'
+import convertFormData from '@/actions/convertFormData'
 
 export default async function RegisterForm() {
-	const registerRequest = async ({ login, password, username }: SignInputs) => {
+	const registerRequest = async (data: FormData) => {
 		'use server'
+		const { login, password, username }: SignInputs = await convertFormData(
+			data
+		)
+
 		await fetch(process.env.PUBLIC_URL + '/api/auth/register', {
 			method: 'post',
 			body: JSON.stringify({ login, password, username }),
