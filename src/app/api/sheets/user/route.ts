@@ -1,10 +1,11 @@
-import { parseJWT } from '@/services/JwtService'
+import { getJWTTokenAndPayload } from '@/services/JwtService'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-	const header = request.headers.get('cookie')
-	const token = header?.split('=')[1] || ''
-	const playerId = parseJWT(token).sub?.split(',')[0]
+	const jwt = getJWTTokenAndPayload(request)
+
+	const token = jwt.token
+	const playerId = jwt.payload
 
 	const response = await fetch(
 		process.env.API_URL + '/sheets/user/' + playerId,

@@ -13,6 +13,5 @@ export default async function convertFormData(formData: FormData) {
 		field = formFields.next()
 	}
 
-	console.log(eventData)
 	return eventData
 }
